@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties - Golden Tigers Realtors</title>
+    <link rel="stylesheet" href="styles.css"> <!-- You can link your CSS file here -->
+</head>
+<body>
+    <header>
+        <h1>Properties</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="SignUp.html">Sign Up</a></li>
+                <li><a href="Login.html">Sign In</a></li>
+                <li><a href="Properties.html">Properties</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="search-filter">
+            <h2>Search Properties</h2>
+            <form id="property-search-form">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location">
+
+                <label for="cost-range">Cost Range:</label>
+                <input type="text" id="cost-range" name="cost-range">
+
+                <label for="property-type">Property Type:</label>
+                <select id="property-type" name="property-type">
+                    <option value="house">House</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="condo">Condo</option>
+                    <!-- Add more options as needed -->
+                </select>
+
+                <!-- Add more filter options here as needed -->
+
+                <button type="button" onclick="searchProperties()">Search</button>
+            </form>
+        </section>
+
+        <section id="property-listings">
+            <h2>Property Listings</h2>
+            <!-- Property listings will be dynamically generated here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Golden Tigers Realtors. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function searchProperties() {
+            // This function will be implemented using JavaScript to fetch and display property listings based on the search criteria
+            // You would typically use AJAX to communicate with a server-side script (e.g., PHP, Node.js) to perform the search
+            // For simplicity, I'm leaving this part as an exercise for you or your developer to implement
+            console.log('Searching properties...');
+        }
+    </script>
+</body>
+</html>
