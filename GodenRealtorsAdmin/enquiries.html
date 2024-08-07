@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiries Management</title>
+    <link rel="Here's the rest of the enhanced UI/UX design for the remaining pages from the zip folder, styled consistently with the main admin panel. The following includes styles and functionality for Enquiries Management and Analytics pages, as well as the scripts for button interactions.
+
+### Enquiries Management Page (enquiries.html)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiries Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="properties.html"><i class="fas fa-building"></i> Properties</a></li>
+                <li><a href="users.html"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="enquiries.html" class="active"><i class="fas fa-envelope"></i> Enquiries</a></li>
+                <li><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Enquiries Management</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="profile.jpg" alt="User">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+            <section class="enquiries-section">
+                <h2>Manage Enquiries</h2>
+                <div class="enquiry-list">
+                    <!-- Enquiry Items -->
+                    <div class="enquiry-item">
+                        <h3>John Doe</h3>
+                        <p>Message: Interested in Property A</p>
+                        <button class="reply-btn" onclick="openReplyModal()">Reply</button>
+                        <button class="delete-btn" onclick="deleteEnquiry()">Delete</button>
+                    </div>
+                    <!-- Repeat for more enquiries -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <div id="replyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReplyModal()">&times;</span>
+            <h2>Reply to Enquiry</h2>
+            <form id="replyForm">
+                <label for="replyMessage">Message:</label>
+                <textarea id="replyMessage" name="replyMessage" required></textarea>
+                <button type="submit">Send Reply</button>
+            </form>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

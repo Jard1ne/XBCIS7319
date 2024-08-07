@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="properties.html" class="active"><i class="fas fa-building"></i> Properties</a></li>
+                <li><a href="users.html"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="enquiries.html"><i class="fas fa-envelope"></i> Enquiries</a></li>
+                <li><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Property Management</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="profile.jpg" alt="User">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+            <section class="properties-section">
+                <h2>Manage Properties</h2>
+                <button class="add-btn" onclick="openAddPropertyModal()">Add Property</button>
+                <div class="property-list">
+                    <!-- Property Items -->
+                    <div class="property-item">
+                        <h3>Property A</h3>
+                        <p>Details about Property A</p>
+                        <button class="edit-btn" onclick="openEditPropertyModal()">Edit</button>
+                        <button class="delete-btn" onclick="deleteProperty()">Delete</button>
+                    </div>
+                    <!-- Repeat for more properties -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <div id="addPropertyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddPropertyModal()">&times;</span>
+            <h2>Add Property</h2>
+            <form id="addPropertyForm">
+                <label for="propertyName">Property Name:</label>
+                <input type="text" id="propertyName" name="propertyName" required>
+                <label for="propertyDetails">Property Details:</label>
+                <textarea id="propertyDetails" name="propertyDetails" required></textarea>
+                <button type="submit">Add Property</button>
+            </form>
+        </div>
+    </div>
+    <div id="editPropertyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditPropertyModal()">&times;</span>
+            <h2>Edit Property</h2>
+            <form id="editPropertyForm">
+                <label for="editPropertyName">Property Name:</label>
+                <input type="text" id="editPropertyName" name="editPropertyName" required>
+                <label for="editPropertyDetails">Property Details:</label>
+                <textarea id="editPropertyDetails" name="editPropertyDetails" required></textarea>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #4b7bec;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.sidebar-header h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.sidebar-menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.sidebar-menu li a i {
+    margin-right: 10px;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #5f8ee3;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.topbar-left h1 {
+    font-size: 1.5em;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    position: relative;
+    margin-right: 20px;
+}
+
+.notifications .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px 10px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.dashboard-section {
+    margin-top: 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin-right: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card:last-child {
+    margin-right: 0;
+}
+
+.charts {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chart {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin-right: 20px;
+}
+
+.chart:last-child {
+    margin-right: 0;
+}

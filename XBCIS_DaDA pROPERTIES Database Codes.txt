@@ -1,0 +1,60 @@
+CREATE SCHEMA golden_tigers;
+USE golden_tigers;
+
+
+CREATE TABLE properties ( 
+id INT AUTO_INCREMENT PRIMARY KEY, 
+property_title VARCHAR(100) NOT NULL, 
+property_location VARCHAR(100) NOT NULL,
+property_address VARCHAR(255) NOT NULL,
+property_price DECIMAL(10, 2) NOT NULL,
+property_bedrooms INT(10),
+property_garage INT(10),
+property_size DOUBLE(100),
+property_description VARCHAR(100),
+property_images VARCHAR(100),
+);
+
+CREATE TABLE property_images ( 
+id INT AUTO_INCREMENT PRIMARY KEY, 
+property_id INT, 
+image_name VARCHAR(255),
+image_data LONGBLOB, 
+image_path VARCHAR(255) NOT NULL, 
+FOREIGN KEY (property_id) REFERENCES properties(id) ON DELETE CASCADE
+);
+
+-- Insert a property 
+INSERT INTO properties (property_name, property_description) 
+VALUES ('Property 1', 'This is a sample property.'); 
+
+-- Get the ID of the inserted property 
+SET @property_id = LAST_INSERT_ID(); 
+
+-- Insert image paths associated with the property
+INSERT INTO property_images (property_id, image_name, image_path) 
+VALUES 
+(@property_id, 'Front View', '/images/property1_front.jpg'),
+(@property_id, 'Side View', '/images/property1_side.jpg');
+
+Best Practices
+* Organize your file storage: Consider organizing image files in directories that reflect their associated data (e.g., /images/products/product_id/).
+
+CREATE TABLE inquiries ( 
+id INT AUTO_INCREMENT PRIMARY KEY, 
+customer_id INT, 
+property_id INT, 
+message TEXT NOT NULL, 
+inquiry_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+status ENUM('Pending', 'In Progress', 'Closed') DEFAULT 'Pending', 
+FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE, 
+FOREIGN KEY (property_id) REFERENCES properties(id) ON DELETE SET NULL 
+);
+
+CREATE TABLE customers ( 
+id INT AUTO_INCREMENT PRIMARY KEY, 
+full_name VARCHAR(255) NOT NULL, 
+email VARCHAR(255) NOT NULL, 
+phone_number VARCHAR(20), 
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
+);
