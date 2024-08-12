@@ -1,0 +1,86 @@
+
+-- Drop and recreate schema
+DROP SCHEMA IF EXISTS golden_tigers;
+CREATE DATABASE golden_tigers;
+USE golden_tigers;
+
+-- Properties table
+CREATE TABLE properties ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    title VARCHAR(100) NOT NULL, 
+    location VARCHAR(100) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    bedrooms INT,
+    garage INT,
+    size DOUBLE,
+    description TEXT
+);
+
+-- Property images table
+CREATE TABLE property_images ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    property_id INT, 
+    image_data LONGBLOB, 
+    image_path VARCHAR(255),
+    FOREIGN KEY (property_id) REFERENCES properties(id) ON DELETE CASCADE
+);
+
+-- Users table
+CREATE TABLE users(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL, 
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    UNIQUE (email)
+);
+
+-- Customers table
+CREATE TABLE customers ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    full_name VARCHAR(255) NOT NULL, 
+    email VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(20), 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Inquiries table
+CREATE TABLE inquiries ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    customer_id INT, 
+    property_id INT, 
+    message TEXT NOT NULL, 
+    inquiry_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    status ENUM('Pending', 'In Progress', 'Closed') DEFAULT 'Pending', 
+    FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE, 
+    FOREIGN KEY (property_id) REFERENCES properties(id) ON DELETE SET NULL 
+);
+
+-- Alter the Inquiries table to add username and property_title
+ALTER TABLE inquiries
+ADD COLUMN username VARCHAR(100) NOT NULL,
+ADD COLUMN property_title VARCHAR(100) NOT NULL;
+
+-- Update the Inquiries table with username and property_title
+UPDATE inquiries i
+JOIN customers c ON i.customer_id = c.id
+JOIN properties p ON i.property_id = p.id
+SET i.username = c.full_name,  -- Assuming full_name is used as username
+    i.property_title = p.title;
+
+
+-- Insert a property 
+INSERT INTO properties (property_name, property_description) 
+VALUES ('Property 1', 'This is a sample property.'); 
+
+-- Get the ID of the inserted property 
+SET @property_id = LAST_INSERT_ID(); 
+
+-- Insert image paths associated with the property
+INSERT INTO property_images (property_id, image_name, image_path) 
+VALUES 
+(@property_id, 'Front View', '/images/property1_front.jpg'),
+(@property_id, 'Side View', '/images/property1_side.jpg');
+
